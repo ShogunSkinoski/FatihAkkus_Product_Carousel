@@ -281,7 +281,6 @@
             }
 
             _updateCarouselPosition() {
-                if (!this.track || !this.track.querySelector('.carousel-item')) return;
                 const itemWidth = this.track.querySelector('.carousel-item').getBoundingClientRect().width;
                 const offset = -this.currentIndex * itemWidth;
                 this.track.style.transform = `translateX(${offset}px)`;
@@ -289,7 +288,6 @@
             }
 
             _updateButtonState() {
-                if (!this.prevBtn || !this.nextBtn) return;
                 const maxIndex = this.products.length - this.itemsVisible;
                 this.prevBtn.disabled = this.currentIndex === 0;
                 this.nextBtn.disabled = this.currentIndex >= maxIndex;
@@ -301,7 +299,6 @@
         }
 
         async function injectCarousel() {
-            try {
                 const xpath = "/html/body/eb-root/cx-storefront/main/cx-page-layout/cx-page-slot[2]";
                 const targetElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
@@ -314,10 +311,6 @@
                 const dataRepository = new DataRepository();
                 const productCarousel = new ProductCarousel('#injected-carousel', dataRepository);
                 await productCarousel.init();
-                
-            } catch (error) {
-                console.error('Failed to inject carousel:', error);
-            }
         }
     
         injectCarousel();
