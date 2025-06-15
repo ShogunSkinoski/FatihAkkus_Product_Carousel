@@ -59,10 +59,6 @@
         class ProductCarousel {
             constructor(containerSelecter, dataRepository){
                 this.container = document.querySelector(containerSelecter);
-                if(!this.container) {
-                    console.error(`Container not found: ${containerSelecter}`);
-                    return;
-                }
                 this.dataRepository = dataRepository;
                 this.products = [];
                 this.favorites = [];
