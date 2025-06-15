@@ -288,6 +288,7 @@
             }
 
             _updateButtonState() {
+                if (!this.prevBtn || !this.nextBtn) return;
                 const maxIndex = this.products.length - this.itemsVisible;
                 this.prevBtn.disabled = this.currentIndex === 0;
                 this.nextBtn.disabled = this.currentIndex >= maxIndex;
